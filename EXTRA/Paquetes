@@ -1,82 +1,82 @@
 src/main/java/org/proyecto
 |
-|----- Main_ProyectoFinal.java			        	//Main del proyecto
+|----- Main_ProyectoFinal.java                //Main del proyecto
 |
-|----- controller					                    //Paquete para las clases Controller del Modelo Vista Controlador
-|      	|_____ EstrellasController.java			      //Controlador de las valoraciones de las obras 
-|	      |_____ MenuController.java			          //Controlador del panel desplegable dentro de la ventana Museo
-|	      |_____ MuseoController.java			          //Controlador de la Ventana Museo (Principal)
-|      	|_____ ObraController.java			          //Controlador de ambos paneles con información de las obras
-|	      |_____ RegistroController.java			      //Controlador del panel de SignUp
-|	      |_____ TrabajadorController.java		      //Controlador de la ventana del Trabajador (trato de consultas)
+|----- controller                            //Paquete para las clases Controller del Modelo Vista Controlador
+|      	|_____ EstrellasController.java          //Controlador de las valoraciones de las obras 
+|	      |_____ MenuController.java               //Controlador del panel desplegable dentro de la ventana Museo
+|	      |_____ MuseoController.java              //Controlador de la Ventana Museo (Principal)
+|      	|_____ ObraController.java               //Controlador de ambos paneles con información de las obras
+|	      |_____ RegistroController.java           //Controlador del panel de SignUp
+|	      |_____ TrabajadorController.java         //Controlador de la ventana del Trabajador (trato de consultas)
 |
-|----- dao						                        //Paquete que contiene las interfaces que se usan en el proyecto
-|       |_____ IConsulta.java				              //Interfaz para la tabla SQL Consulta
-|       |_____ IObra.java				                  //Interfaz para la tabla SQL Obra
-|       |_____ IPuntuacion.java				            //Interfaz para la tabla SQL Puntuacion
-|       |_____ IRespuesta.java				            //Interfaz para la tabla SQL Respuesta
-|       |_____ IUsuario.java				              //Interfaz para la tabla SQL Usuario
-|       |_____ IPermisos.java				              //Interfaz para la tabla SQL Permiso y Permisos_Usuario
-|       |_____ impl					                  //Paquete que contiene las clases que tratan los datos con MySQL
-|               |_____ ConsultaDao.java			      //Clase que trata los datos de la clase Consulta en la BBDD
-|               |_____ GenericaObra.java		      //Clase que trata los datos de la clase Obra y sus hijas en la BBDD
-|               |_____ ObraService.java			      //Clase intermedia para ambos paneles que contienen datos de la obra. Contiene la lsita de obras que se mostraran
-|               |_____ PuntuacionDao.java		      //Clase que trata los datos de la clase Puntuacion en la BBDD
-|               |_____ RespuestaDao.java		      //Clase que trata los datos de la clase Respuesta en la BBDD
-|               |_____ UsuarioDao.java			      //Clase que trata los datos de la clase Usuario en la BBDD
-|               |_____ PermisosDao.java			      //Clase que trata los datos de la clase Permiso y Permiso_Usuario en la BBDD
-|  
-|----- excepciones					                  //Paquete que contiene las excepciones del proyecto
-|       |_____ ConsultaException.java			        //Clase exception relacionada con las Exceptions de la clase Consulta
-|       |_____ ObraException.java			            //Clase exception relacionada con las Exceptions de la clase Obra
-|       |_____ PuntuacionException.java			      //Clase exception relacionada con las Exceptions de la clase Puntuacion
-|       |_____ RespuestaException.java			      //Clase exception relacionada con las Exceptions de la clase Respuesta
-|       |_____ UsuarioException.java			        //Clase exception relacionada con las Exceptions de la clase Usuario
+|----- dao                                    //Paquete que contiene las interfaces que se usan en el proyecto
+|       |_____ IConsulta.java                     //Interfaz para la tabla SQL Consulta
+|       |_____ IObra.java                         //Interfaz para la tabla SQL Obra
+|       |_____ IPuntuacion.java                   //Interfaz para la tabla SQL Puntuacion
+|       |_____ IRespuesta.java                    //Interfaz para la tabla SQL Respuesta
+|       |_____ IUsuario.java                      //Interfaz para la tabla SQL Usuario
+|       |_____ IPermisos.java                     //Interfaz para la tabla SQL Permiso y Permisos_Usuario
+|       |_____ impl                           //Paquete que contiene las clases que tratan los datos con MySQL
+|               |_____ ConsultaDao.java           //Clase que trata los datos de la clase Consulta en la BBDD
+|               |_____ GenericaObra.java          //Clase que trata los datos de la clase Obra y sus hijas en la BBDD
+|               |_____ ObraService.java           //Clase intermedia para ambos paneles que contienen datos de la obra. Contiene la lsita de obras
+|               |_____ PuntuacionDao.java         //Clase que trata los datos de la clase Puntuacion en la BBDD
+|               |_____ RespuestaDao.java          //Clase que trata los datos de la clase Respuesta en la BBDD
+|               |_____ UsuarioDao.java            //Clase que trata los datos de la clase Usuario en la BBDD
+|               |_____ PermisosDao.java           //Clase que trata los datos de la clase Permiso y Permiso_Usuario en la BBDD
 |
-|----- ui						                          //Paquete que contiene la parte visual del proyecto
-|       |_____ PantallaMuseo.java			            //Ventana principal que contiene la finalidad del proyecto
-|       |_____ VentanaRegistro.java			          //Ventana inicial que contiene el registro, inicio de sesión y contacto 
-|       |_____ VentanaTrabajador.java			        //Ventana que solo los trabajadores pueden abrir
-|       |_____ paneles					                  //Paquete que contiene los paneles que usan las ventanas principales
-|               |_____ PaneAjustes.java			          //Panel que permite la configuración de algunos datos
-|               |_____ PaneContact.java			          //Panel que permite enviar las consultas en la ventana Registro
-|               |_____ PaneDatosObra.java		          //Panel que contiene información sobre la obra visible
-|               |_____ PaneEstrellas.java		          //Panel que contiene las estrellas para puntuar la obra, situado en PaneImagenObra
-|               |_____ PaneImagenObra.java		        //Panel que contiene la imagen de la obra, y mas datos relacionados
-|               |_____ PaneLogIn.java			            //Panel inicial al abrir la aplicación que permite el inicio de sesión del usuario
-|               |_____ PaneMenu.java			            //Panel que contiene botones para una mejor experiencia y facilidad de uso
-|               |_____ PanePerfil.java			          //Panel que contiene los datos del usuario que puede llegar a modificar
-|               |_____ PaneSignUp.java			          //Panel que permite el registro de un nuevo usuario, situado en VentanaRegistro
-|	
-|----- util						                        //Paquete que contiene las clases "Útiles" que usa el proyecto
-|       |_____ ConsultasCreadas.java			        //Clase Singelton que contiene un Array con todas las consultas para mostrarlas
-|       |_____ GestorFicheroConfiguracion.java		//Clase que contiene métodos para tratar el fichero conf.properties
-|       |_____ GestorSesionesHibernate.java		    //Clase que gestiona la conexiñon de Hibernate a MySQL
-|       |_____ Seguridad.java				              //Clase con métodos de encriptación de Strings
-|       |_____ UtilesData.java				            //Clase con métodos de trato de imágenes, fechas y animación de botones
+|----- excepciones                            //Paquete que contiene las excepciones del proyecto
+|       |_____ ConsultaException.java             //Clase exception relacionada con las Exceptions de la clase Consulta
+|       |_____ ObraException.java                 //Clase exception relacionada con las Exceptions de la clase Obra
+|       |_____ PuntuacionException.java           //Clase exception relacionada con las Exceptions de la clase Puntuacion
+|       |_____ RespuestaException.java            //Clase exception relacionada con las Exceptions de la clase Respuesta
+|       |_____ UsuarioException.java              //Clase exception relacionada con las Exceptions de la clase Usuario
 |
-|----- vo					          	                //Paquete que contiene las clases que van a la BBDD
-|       |_____ Consulta.java				              //Clase relacionada con la tabla Consulta de la BBDD
-|       |_____ Cuadro.java			  	              //Clase relacionada con la tabla Cuadro de la BBDD
-|       |_____ Escultura.java			     	          //Clase relacionada con la tabla Escultura de la BBDD
-|       |_____ Grabado.java			  	              //Clase relacionada con la tabla Grabado de la BBDD
-|       |_____ Obra.java				                  //Clase relacionada con la tabla Obra de la BBDD
-|       |_____ Permiso.java				                //Clase relacionada con la tabla Permiso de la BBDD
-|       |_____ PermisosUsuario.java			          //Clase relacionada con la tabla Permisos_Usuario de la BBDD
-|       |_____ Puntuacion.java				            //Clase relacionada con la tabla Puntuacion de la BBDD
-|       |_____ Respuesta.java				              //Clase relacionada con la tabla Respuesta de la BBDD
-|       |_____ Rol.java					                  //Clase relacionada con la tabla Rol de la BBDD
-|       |_____ Usuario.java				                //Clase relacionada con la tabla Usuario de la BBDD
+|----- ui                                     //Paquete que contiene la parte visual del proyecto
+|       |_____ PantallaMuseo.java                 //Ventana principal que contiene la finalidad del proyecto
+|       |_____ VentanaRegistro.java               //Ventana inicial que contiene el registro, inicio de sesión y contacto 
+|       |_____ VentanaTrabajador.java             //Ventana que solo los trabajadores pueden abrir
+|       |_____ paneles                            //Paquete que contiene los paneles que usan las ventanas principales
+|               |_____ PaneAjustes.java               //Panel que permite la configuración de algunos datos
+|               |_____ PaneContact.java               //Panel que permite enviar las consultas en la ventana Registro
+|               |_____ PaneDatosObra.java             //Panel que contiene información sobre la obra visible
+|               |_____ PaneEstrellas.java             //Panel que contiene las estrellas para puntuar la obra, situado en PaneImagenObra
+|               |_____ PaneImagenObra.java            //Panel que contiene la imagen de la obra, y mas datos relacionados
+|               |_____ PaneLogIn.java                 //Panel inicial al abrir la aplicación que permite el inicio de sesión del usuario
+|               |_____ PaneMenu.java                  //Panel que contiene botones para una mejor experiencia y facilidad de uso
+|               |_____ PanePerfil.java                //Panel que contiene los datos del usuario que puede llegar a modificar
+|               |_____ PaneSignUp.java                //Panel que permite el registro de un nuevo usuario, situado en VentanaRegistro
 |
-|----- module-info.java					              //Fichero de texto que permite comunicación entre las dependencias por seguridad
+|----- util                                   //Paquete que contiene las clases "Útiles" que usa el proyecto
+|       |_____ ConsultasCreadas.java              //Clase Singelton que contiene un Array con todas las consultas para mostrarlas
+|       |_____ GestorFicheroConfiguracion.java    //Clase que contiene métodos para tratar el fichero conf.properties
+|       |_____ GestorSesionesHibernate.java       //Clase que gestiona la conexiñon de Hibernate a MySQL
+|       |_____ Seguridad.java                     //Clase con métodos de encriptación de Strings
+|       |_____ UtilesData.java                    //Clase con métodos de trato de imágenes, fechas y animación de botones
 |
-|----- conf
-|       |_____ conf.properties				        //Fichero que contiene datos para ajustes, configuración y conexion
+|----- vo                                     //Paquete que contiene las clases que van a la BBDD
+|       |_____ Consulta.java                      //Clase relacionada con la tabla Consulta de la BBDD
+|       |_____ Cuadro.java                        //Clase relacionada con la tabla Cuadro de la BBDD
+|       |_____ Escultura.java                     //Clase relacionada con la tabla Escultura de la BBDD
+|       |_____ Grabado.java                       //Clase relacionada con la tabla Grabado de la BBDD
+|       |_____ Obra.java                          //Clase relacionada con la tabla Obra de la BBDD
+|       |_____ Permiso.java                       //Clase relacionada con la tabla Permiso de la BBDD
+|       |_____ PermisosUsuario.java               //Clase relacionada con la tabla Permisos_Usuario de la BBDD
+|       |_____ Puntuacion.java                    //Clase relacionada con la tabla Puntuacion de la BBDD
+|       |_____ Respuesta.java                     //Clase relacionada con la tabla Respuesta de la BBDD
+|       |_____ Rol.java                           //Clase relacionada con la tabla Rol de la BBDD
+|       |_____ Usuario.java                       //Clase relacionada con la tabla Usuario de la BBDD
+|
+|----- module-info.java                       //Fichero de texto que permite comunicación entre las dependencias por seguridad
+|
+|----- conf                                   //Paqute que contiene el fichero properties
+|       |_____ conf.properties                    //Fichero que contiene datos para ajustes, configuración y conexion
 
 src/main/resources
 |
-|----- hibernate.cfg.xml				            //Fichero XML que contiene los datos de conexión con la BBDD para Hibernate
-|----- recursos 					                  //Paquete que contiene imágenes/audios y hojas de estilo que va a usar el proyecto
-|       |_____ audio					                  //Paquete que contiene los audios que se van a emplear
-|       |_____ images					                  //Paquete que contiene las imágenes que se van a emplear (png y jpg)
-|       |_____ styles					                  //Paquete que contiene los ficheros CSS que se emplean
+|----- hibernate.cfg.xml                    //Fichero XML que contiene los datos de conexión con la BBDD para Hibernate
+|----- recursos                             //Paquete que contiene imágenes/audios y hojas de estilo que va a usar el proyecto
+|       |_____ audio                            //Paquete que contiene los audios que se van a emplear
+|       |_____ images                           //Paquete que contiene las imágenes que se van a emplear (png y jpg)
+|       |_____ styles                           //Paquete que contiene los ficheros CSS que se emplean
