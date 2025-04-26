@@ -2,13 +2,13 @@ src/main/java/org/proyecto
 |
 |----- Main_ProyectoFinal.java                //Main del proyecto
 |
-|----- controller                            //Paquete para las clases Controller del Modelo Vista Controlador
-|      	|_____ EstrellasController.java          //Controlador de las valoraciones de las obras 
-|	      |_____ MenuController.java               //Controlador del panel desplegable dentro de la ventana Museo
-|	      |_____ MuseoController.java              //Controlador de la Ventana Museo (Principal)
-|      	|_____ ObraController.java               //Controlador de ambos paneles con información de las obras
-|	      |_____ RegistroController.java           //Controlador del panel de SignUp
-|	      |_____ TrabajadorController.java         //Controlador de la ventana del Trabajador (trato de consultas)
+|----- controller                             //Paquete para las clases Controller del Modelo Vista Controlador
+|       |_____ EstrellasController.java           //Controlador de las valoraciones de las obras 
+|       |_____ MenuController.java                //Controlador del panel desplegable dentro de la ventana Museo
+|       |_____ MuseoController.java               //Controlador de la Ventana Museo (Principal)
+|       |_____ ObraController.java                //Controlador de ambos paneles con información de las obras
+|       |_____ RegistroController.java            //Controlador del panel de SignUp
+|       |_____ TrabajadorController.java          //Controlador de la ventana del Trabajador (trato de consultas)
 |
 |----- dao                                    //Paquete que contiene las interfaces que se usan en el proyecto
 |       |_____ IConsulta.java                     //Interfaz para la tabla SQL Consulta
