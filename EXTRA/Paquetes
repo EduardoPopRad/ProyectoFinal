@@ -27,7 +27,7 @@ src/main/java/org/proyecto
 |		            |_____ PermisosDao.java			      //Clase que trata los datos de la clase Permiso y Permiso_Usuario en la BBDD
 |
 |----- excepciones					                  //Paquete que contiene las excepciones del proyecto
-|	      |_____ ConsultaException.java			        //Clase exception relacionada con las Exceptions de la clase Consulta
+|       |_____ ConsultaException.java			        //Clase exception relacionada con las Exceptions de la clase Consulta
 |	      |_____ ObraException.java			            //Clase exception relacionada con las Exceptions de la clase Obra
 |	      |_____ PuntuacionException.java			      //Clase exception relacionada con las Exceptions de la clase Puntuacion
 |	      |_____ RespuestaException.java			      //Clase exception relacionada con las Exceptions de la clase Respuesta
