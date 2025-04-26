@@ -12,12 +12,12 @@ src/main/java/org/proyecto
 |
 |----- dao						                        //Paquete que contiene las interfaces que se usan en el proyecto
 |       |_____ IConsulta.java				              //Interfaz para la tabla SQL Consulta
-|	      |_____ IObra.java				                  //Interfaz para la tabla SQL Obra
-|     	|_____ IPuntuacion.java				            //Interfaz para la tabla SQL Puntuacion
-|	      |_____ IRespuesta.java				            //Interfaz para la tabla SQL Respuesta
-|	      |_____ IUsuario.java				              //Interfaz para la tabla SQL Usuario
-|	      |_____ IPermisos.java				              //Interfaz para la tabla SQL Permiso y Permisos_Usuario
-|	      |_____ impl					                  //Paquete que contiene las clases que tratan los datos con MySQL
+|       |_____ IObra.java				                  //Interfaz para la tabla SQL Obra
+|       |_____ IPuntuacion.java				            //Interfaz para la tabla SQL Puntuacion
+|       |_____ IRespuesta.java				            //Interfaz para la tabla SQL Respuesta
+|       |_____ IUsuario.java				              //Interfaz para la tabla SQL Usuario
+|       |_____ IPermisos.java				              //Interfaz para la tabla SQL Permiso y Permisos_Usuario
+|       |_____ impl					                  //Paquete que contiene las clases que tratan los datos con MySQL
 |               |_____ ConsultaDao.java			      //Clase que trata los datos de la clase Consulta en la BBDD
 |               |_____ GenericaObra.java		      //Clase que trata los datos de la clase Obra y sus hijas en la BBDD
 |               |_____ ObraService.java			      //Clase intermedia para ambos paneles que contienen datos de la obra. Contiene la lsita de obras que se mostraran
