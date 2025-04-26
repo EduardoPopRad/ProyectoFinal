@@ -1,0 +1,120 @@
+use proyecto;
+
+DROP TABLE IF EXISTS respuesta;
+DROP TABLE IF EXISTS consulta;
+DROP TABLE IF EXISTS puntuacion;
+DROP TABLE IF EXISTS grabado;
+DROP TABLE IF EXISTS escultura;
+DROP TABLE IF EXISTS cuadro;
+DROP TABLE IF EXISTS obra;
+DROP TABLE IF EXISTS permisos_usuario;
+DROP TABLE IF EXISTS usuario;
+DROP TABLE IF EXISTS permiso;
+DROP TABLE IF EXISTS rol;
+
+
+-- Crear tabla de rol
+CREATE TABLE rol (
+    id_rol INTEGER AUTO_INCREMENT PRIMARY KEY,
+    nombre_corto VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE permiso (
+    id_permiso INTEGER AUTO_INCREMENT PRIMARY KEY,
+    tipo VARCHAR(255) NOT NULL
+);
+
+-- Crear la tabla Usuario
+CREATE TABLE usuario (
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    usuario VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    fecha_registro DATE NOT NULL,
+    imagen BLOB NOT NULL,
+    id_rol INT,
+    FOREIGN KEY (id_rol) REFERENCES rol(id_rol) ON UPDATE CASCADE
+);
+
+CREATE TABLE permisos_usuario (
+    id_usu INTEGER,
+    id_permiso INTEGER,
+    FOREIGN KEY (id_usu) REFERENCES usuario(id) ON UPDATE cascade,
+    FOREIGN KEY (id_permiso) REFERENCES permiso(id_permiso) ON UPDATE cascade,
+    PRIMARY KEY(id_usu, id_permiso)
+);
+
+-- Crear la tabla Obra
+CREATE TABLE obra (
+    id_obra INTEGER AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    autor VARCHAR(255) NOT NULL,
+    estilo VARCHAR(100) NOT NULL,
+    dimensiones VARCHAR(13) NOT NULL,
+    anyo VARCHAR(11) NOT NULL,
+    ubicacion VARCHAR(255) NOT NULL,
+    descripcion TEXT NOT NULL,
+    imagen BLOB -- Luego lo cambio a NOT NULL
+);
+
+-- Crear la tabla cuadro
+CREATE TABLE cuadro (
+    id_obra INTEGER PRIMARY KEY,
+    tecnica VARCHAR(100) NOT NULL,
+    FOREIGN KEY (id_obra) REFERENCES obra(id_obra) ON UPDATE CASCADE
+);
+
+-- Crear la tabla Escultura
+CREATE TABLE escultura (
+    id_obra INTEGER PRIMARY KEY,
+    material VARCHAR(100) NOT NULL,
+    FOREIGN KEY (id_obra) REFERENCES obra(id_obra) ON UPDATE CASCADE
+);
+
+-- Crear la tabla Grabado
+CREATE TABLE grabado (
+    id_obra INTEGER PRIMARY KEY,
+    matriz VARCHAR(100) NOT NULL,
+    FOREIGN KEY (id_obra) REFERENCES obra(id_obra) ON UPDATE CASCADE
+);
+
+-- Crear tabla Puntuacion
+CREATE TABLE puntuacion (
+	id_usuario integer,
+	id_obra integer, 
+	valor integer not null,
+	primary key(id_usuario, id_obra),
+	FOREIGN KEY (id_usuario) REFERENCES usuario(id),
+	FOREIGN KEY (id_obra) REFERENCES obra(id_obra)
+);
+
+-- Crear la tabla Consulta
+CREATE TABLE consulta (
+    id_consulta INTEGER AUTO_INCREMENT PRIMARY KEY,
+    id_cliente INTEGER NOT NULL,
+    descripcion VARCHAR(150) NOT NULL,
+    consulta TEXT NOT NULL,
+    fechaCreacion DATE NOT NULL,
+    estado BOOLEAN NOT NULL,
+    FOREIGN KEY (id_cliente) REFERENCES Usuario(id) ON UPDATE CASCADE
+);
+
+-- Crear la tabla Respuesta
+CREATE TABLE respuesta (
+    id_respuesta INTEGER AUTO_INCREMENT PRIMARY KEY,
+    id_consulta INTEGER NOT NULL,
+    id_trabajador INTEGER NOT NULL,
+    respuesta TEXT NOT NULL,
+    fecha_respuesta DATE NOT NULL,
+    FOREIGN KEY (id_consulta) REFERENCES Consulta(id_consulta) ON UPDATE CASCADE,
+    FOREIGN KEY (id_trabajador) REFERENCES Usuario(id) ON UPDATE CASCADE
+);
+
+-- Inserción de datos de ejemplo en la tabla permiso
+INSERT INTO rol (nombre_corto) VALUES ('Cliente');
+INSERT INTO rol (nombre_corto) VALUES ('Trabajador');
+
+INSERT INTO permiso (tipo) VALUES ('Insertar_Obras');
+INSERT INTO permiso (tipo) VALUES ('Actualizar_Obras');
+INSERT INTO permiso (tipo) VALUES ('Eliminar_Obras');
+INSERT INTO permiso (tipo) VALUES ('Responder_Consultas');
