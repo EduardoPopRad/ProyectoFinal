@@ -18,14 +18,14 @@ src/main/java/org/proyecto
 |	      |_____ IUsuario.java				              //Interfaz para la tabla SQL Usuario
 |	      |_____ IPermisos.java				              //Interfaz para la tabla SQL Permiso y Permisos_Usuario
 |	      |_____ impl					                  //Paquete que contiene las clases que tratan los datos con MySQL
-|		            |_____ ConsultaDao.java			      //Clase que trata los datos de la clase Consulta en la BBDD
-|		            |_____ GenericaObra.java		      //Clase que trata los datos de la clase Obra y sus hijas en la BBDD
-|		            |_____ ObraService.java			      //Clase intermedia para ambos paneles que contienen datos de la obra. Contiene la lsita de obras que se mostraran
-|		            |_____ PuntuacionDao.java		      //Clase que trata los datos de la clase Puntuacion en la BBDD
-|		            |_____ RespuestaDao.java		      //Clase que trata los datos de la clase Respuesta en la BBDD
-|		            |_____ UsuarioDao.java			      //Clase que trata los datos de la clase Usuario en la BBDD
-|		            |_____ PermisosDao.java			      //Clase que trata los datos de la clase Permiso y Permiso_Usuario en la BBDD
-|
+|               |_____ ConsultaDao.java			      //Clase que trata los datos de la clase Consulta en la BBDD
+|               |_____ GenericaObra.java		      //Clase que trata los datos de la clase Obra y sus hijas en la BBDD
+|               |_____ ObraService.java			      //Clase intermedia para ambos paneles que contienen datos de la obra. Contiene la lsita de obras que se mostraran
+|               |_____ PuntuacionDao.java		      //Clase que trata los datos de la clase Puntuacion en la BBDD
+|               |_____ RespuestaDao.java		      //Clase que trata los datos de la clase Respuesta en la BBDD
+|               |_____ UsuarioDao.java			      //Clase que trata los datos de la clase Usuario en la BBDD
+|               |_____ PermisosDao.java			      //Clase que trata los datos de la clase Permiso y Permiso_Usuario en la BBDD
+|  
 |----- excepciones					                  //Paquete que contiene las excepciones del proyecto
 |       |_____ ConsultaException.java			        //Clase exception relacionada con las Exceptions de la clase Consulta
 |       |_____ ObraException.java			            //Clase exception relacionada con las Exceptions de la clase Obra
