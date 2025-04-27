@@ -1,0 +1,37 @@
+.text-area {
+	-fx-background: transparent;
+    -fx-background-color: transparent;
+    -fx-control-inner-background: transparent; 
+    -fx-text-fill: white;
+    -fx-font-size: 11px; 
+    -fx-prompt-text-fill: white; 
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.txt-area {
+	-fx-background: transparent;
+    -fx-background-color: transparent;
+    -fx-control-inner-background: transparent;
+    -fx-text-fill: white; 
+    -fx-font-size: 11px; 
+    -fx-prompt-text-fill: white;
+    -fx-focus-color: transparent; 
+    -fx-faint-focus-color: transparent;
+    -fx-border-color: white; 
+    -fx-border-width: 1; 
+    -fx-border-radius: 5;
+}
+
+.txt-texto {
+	-fx-background-color: rgba(255, 255, 255, 0); 
+	-fx-text-fill: white;
+	-fx-font-size: 11px; 
+	-fx-prompt-text-fill: white
+}
+
+.check-box{
+	-fx-mark-color: rgba(23, 40, 56, 1);
+	-fx-text-fill: rgba(23, 40, 56, 1); 
+	-fx-font-size: 12px;
+}

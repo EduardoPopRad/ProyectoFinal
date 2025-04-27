@@ -1,0 +1,48 @@
+.text-area{
+    -fx-text-fill: black;
+    -fx-font-size: 16px; 
+    -fx-prompt-text-fill: black; 
+	-fx-font-family:'Times New Roman';
+	
+	-fx-background: rgba(255, 255, 255, 0);
+    -fx-background-color: rgba(255, 255, 255, 0);
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-border-color: rgba(255, 255, 255, 0);
+    -fx-border-width: 0;
+    -fx-box-border: rgba(255, 255, 255, 0);
+}
+
+.txt-principales {
+    -fx-text-fill: white;
+    -fx-font-size: 16px; 
+    -fx-font-family: 'Times New Roman'; 
+    -fx-border-width: 0;
+    -fx-alignment: center;
+    -fx-background-color: transparent; 
+    -fx-prompt-text-fill: white; 
+}
+
+.buscador{
+	-fx-border: 2px;
+    -fx-border-radius: 10px;
+    -fx-color: black;
+    -fx-font-family: sans-serif;
+}
+
+.botones {
+	-fx-background-color: transparent;
+	-fx-text-fill: black;
+	-fx-border-color: transparent;
+}
+
+.radio-button {
+    -fx-font-family: "Times New Roman";
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+}
+
+.radio-button .radio {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
