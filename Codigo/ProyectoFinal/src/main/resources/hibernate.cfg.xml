@@ -17,7 +17,9 @@
 
 		<!--tiene que estar ordenado por las claves foraneas aqui tambien-->
  		<mapping class="org.proyecto.vo.Rol"/>
+ 		<mapping class="org.proyecto.vo.Permiso"/>
  		<mapping class="org.proyecto.vo.Usuario"/>
+ 		<mapping class="org.proyecto.vo.PermisosUsuario"/> 		
  		<mapping class="org.proyecto.vo.Obra"/>
  		<mapping class="org.proyecto.vo.Cuadro"/>
  		<mapping class="org.proyecto.vo.Grabado"/>
