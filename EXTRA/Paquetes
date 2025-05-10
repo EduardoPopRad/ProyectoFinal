@@ -6,6 +6,7 @@ src/main/java/org/proyecto
 |       |_____ EstrellasController.java           //Controlador de las valoraciones de las obras 
 |       |_____ MenuController.java                //Controlador del panel desplegable dentro de la ventana Museo
 |       |_____ MuseoController.java               //Controlador de la Ventana Museo (Principal)
+|	|_____ PerfilController.java		  //Controlador de la Ventana Perfil
 |       |_____ ObraController.java                //Controlador de ambos paneles con información de las obras
 |       |_____ RegistroController.java            //Controlador del panel de SignUp
 |       |_____ TrabajadorController.java          //Controlador de la ventana del Trabajador (trato de consultas)
