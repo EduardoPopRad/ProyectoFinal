@@ -29,16 +29,6 @@ public class RespuestDao implements IRespuesta {
 
 	@Override
 	public void insertar(Respuesta obj) {
-		// Ponemos que la consulta ha sido actualizada
-		IConsulta icon = new ConsultaDao();
-		obj.getConsulta().setEstado(true);
-		try {
-			icon.actualizar(obj.getConsulta());
-		} catch (ConsultaException e) {
-			System.out.println(e);
-		}
-		// Deberia de lanzar tambien la excepcion de consulta
-
 		Transaction transaction = null;
 		try (Session session = GestorSesionesHibernate.getSessionFactory().openSession()) {
 			transaction = session.beginTransaction();
@@ -48,6 +38,14 @@ public class RespuestDao implements IRespuesta {
 			if (transaction != null)
 				transaction.rollback();
 			e.printStackTrace();
+		}
+		
+		IConsulta icon = new ConsultaDao();
+		obj.getConsulta().setEstado(true);
+		try {
+			icon.actualizar(obj.getConsulta());
+		} catch (ConsultaException e) {
+			System.out.println(e);
 		}
 	}
 

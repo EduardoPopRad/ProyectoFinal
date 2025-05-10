@@ -39,6 +39,7 @@ public class TrabajadorController {
 			UtilesData.animacionFade(ventana.getBtnDesseleccionar());
 			seleccionada = null;
 			ventana.getTxtArea().clear();
+			ventana.getRespuesta().clear();
 			;
 		});
 
@@ -84,7 +85,7 @@ public class TrabajadorController {
 				return;
 			}
 
-			enviarCorreo();
+			enviarCorreo(seleccionada.getCliente());
 			ventana.getBtnDesseleccionar().fire();
 			ventana.getRespuesta().clear();
 		});
@@ -100,18 +101,18 @@ public class TrabajadorController {
 		ventana.getListView().setItems(observableList);
 	}
 
-	private void enviarCorreo() {
-		Respuesta resp = new Respuesta(seleccionada, usu, ventana.getRespuesta().getText(), LocalDate.now());
-		System.out
-				.println("Correo enviado a: " + seleccionada.getCliente().getEmail() + ". Con la Respuesta:\n " + resp);
-
+	private void enviarCorreo(Usuario usuario) {
+		String r = ventana.getRespuesta().getText().strip();
+		Respuesta resp = new Respuesta(seleccionada, usu, r, LocalDate.now());
+		
+		UtilesData.enviarCorreo(r, usuario.getEmail());
+		
 		IRespuesta iresp = new RespuestDao();
 		try {
 			iresp.insertar(resp);
 		} catch (RespuestaException e) {
 			ventana.getError().setText(e.getDescripcionError());
 			ventana.getError().setVisible(true);
-			System.out.println(e);
 		}
 
 		cargarConsultas();

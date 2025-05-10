@@ -9,6 +9,7 @@ module Proyecto_Final {
 	requires java.desktop;
 	requires javafx.swing;
 	requires bcrypt;
+	requires jakarta.mail;
 	
 	opens org.proyecto.vo to org.hibernate.orm.core;
 	

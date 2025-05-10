@@ -2,6 +2,9 @@ package org.proyecto.vo;
 
 import java.time.LocalDate;
 
+import org.proyecto.dao.IPermisos;
+import org.proyecto.dao.impl.PermisosDao;
+
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -134,20 +137,24 @@ public class Usuario {
 		this.fechaRegistro = fechaRegistro;
 	}
 
-	public boolean isPuedeInsertar() { //Metodo que comprueba en la tabla permisos_usuario con idUsu y idPermiso
-		return true;
+	public boolean isPuedeInsertar() { 
+		IPermisos per = new PermisosDao();
+		return per.tienePermiso(new PermisosUsuario(this, new Permiso(1))); 
 	}
 
-	public boolean isPuedeEliminar() {
-		return true;
+	public boolean isPuedeEliminar() { 
+		IPermisos per = new PermisosDao();
+		return per.tienePermiso(new PermisosUsuario(this, new Permiso(4))); 
 	}
 
 	public boolean isPuedeActualizar() {
-		return true;
+		IPermisos per = new PermisosDao();
+		return per.tienePermiso(new PermisosUsuario(this, new Permiso(2))); 
 	}
 
 	public boolean isPuedeResponder() {
-		return true;
+		IPermisos per = new PermisosDao();
+		return per.tienePermiso(new PermisosUsuario(this, new Permiso(5)));
 	}
 
 	public byte[] getImage() {

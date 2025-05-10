@@ -23,7 +23,7 @@ public class PermisosUsuario {
 		@Column(name = "id_usu")
 		private Integer idUsuario;
 
-		@Column(name = "id_permmiso")
+		@Column(name = "id_permiso")
 		private Integer idPermiso;
 		
 		public PermUsu() {}
@@ -65,6 +65,10 @@ public class PermisosUsuario {
 		this.id=new PermUsu(p.getId(), u.getId());
 		this.permiso=p;
 		this.usuario=u;
+	}
+	
+	public PermUsu getId() {
+		return id;
 	}
 
 	public Usuario getIdUsu() {

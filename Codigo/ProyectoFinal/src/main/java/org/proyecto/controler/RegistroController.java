@@ -218,12 +218,10 @@ public class RegistroController {
 			}
 
 			Rol rol = new Rol();
-			// Comprobar si el email existe aunq no deberia hacerlo si es de la empresa
+			// Comprobar si el email existe
 			String email = signUp.getEmail().getText().strip();
 			if (email.endsWith("@gmail.com") || email.endsWith("@hotmail.com")) {
 				rol.setId(1);
-			} else if (email.endsWith("@miempresa.com")) {
-				rol.setId(2);
 			} else {
 				signUp.getError().setText("El email no es válido");
 				signUp.getError().setVisible(true);

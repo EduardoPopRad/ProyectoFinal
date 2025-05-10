@@ -103,7 +103,6 @@ public class PaneDatosObra {
 		descripcion.setMaxWidth(650);
 		descripcion.setMaxHeight(350);
 		descripcion.setEditable(false);
-		descripcion.setStyle("-fx-background-color: lightblue;");
 		descripcion.getStyleClass().add("text-area");
 
 		VBox.setMargin(descripcion, new Insets(0, 0, 0, 30));
