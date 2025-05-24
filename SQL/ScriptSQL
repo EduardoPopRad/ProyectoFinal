@@ -96,7 +96,7 @@ CREATE TABLE consulta (
     consulta TEXT NOT NULL,
     fechaCreacion DATE NOT NULL,
     estado BOOLEAN NOT NULL,
-    FOREIGN KEY (id_cliente) REFERENCES Usuario(id) ON UPDATE CASCADE
+    FOREIGN KEY (id_cliente) REFERENCES usuario(id) ON UPDATE CASCADE
 );
 
 -- Crear la tabla Respuesta
@@ -106,8 +106,8 @@ CREATE TABLE respuesta (
     id_trabajador INTEGER NOT NULL,
     respuesta TEXT NOT NULL,
     fecha_respuesta DATE NOT NULL,
-    FOREIGN KEY (id_consulta) REFERENCES Consulta(id_consulta) ON UPDATE CASCADE,
-    FOREIGN KEY (id_trabajador) REFERENCES Usuario(id) ON UPDATE CASCADE
+    FOREIGN KEY (id_consulta) REFERENCES consulta(id_consulta) ON UPDATE CASCADE,
+    FOREIGN KEY (id_trabajador) REFERENCES usuario(id) ON UPDATE CASCADE
 );
 
 -- Inserción de datos de ejemplo en la tabla permiso
