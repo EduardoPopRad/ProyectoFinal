@@ -3,6 +3,7 @@ package org.proyecto.controler;
 import org.proyecto.ui.PantallaMuseo;
 import org.proyecto.ui.VentanaRegistro;
 import org.proyecto.ui.VentanaTrabajador;
+import org.proyecto.ui.paneles.PaneAjustes;
 import org.proyecto.ui.paneles.PaneMenu;
 import org.proyecto.ui.paneles.PanePerfil;
 import org.proyecto.util.UtilesData;
@@ -55,7 +56,7 @@ public class MenuController {
 
 		menu.getAjustes().setOnAction(event -> {
 			UtilesData.animacionFade(menu.getAjustes());
-			btnAjustes();
+			btnAjustes(usu);
 		});
 		
 		menu.getVolverRegistro().setOnAction(event ->{ 
@@ -75,8 +76,9 @@ public class MenuController {
 		perfil.mostrarVentanaPerfil();
 	}
 
-	private void btnAjustes() {
-		System.out.println("Se ha pulsado boton ajustes del menu");
+	private void btnAjustes(Usuario u) {
+		PaneAjustes ajustes = new PaneAjustes(u);
+		ajustes.mostrarVentanaAjustes();
 	}
 
 	private void btnVolverRegistro(Stage primaryStage) {

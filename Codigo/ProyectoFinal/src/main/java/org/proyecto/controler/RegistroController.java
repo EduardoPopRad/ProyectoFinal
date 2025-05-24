@@ -177,35 +177,37 @@ public class RegistroController {
 
 		// Boton registrar
 		signUp.getRegister().setOnAction(event -> {
+			
 			IUsuario iusu = new UsuarioDao();
-
 			// Poner no visible TextField de error, ya que al pulsar no deberia aparecer ya
 			// que supuestamente se ha solucionado el error
+			
 			signUp.getError().setVisible(false);
-
 			// Comprobar si hay algun campo vacio
+			
 			if (signUp.getEmail().getText().strip().isEmpty() || signUp.getPsw().getText().strip().isEmpty()
 					|| signUp.getTxtUsu().getText().strip().isEmpty() || signUp.getPsw2().getText().strip().isEmpty()) {
 				signUp.getError().setText("Debes rellenar todos los campos");
 				signUp.getError().setVisible(true);
 				return;
 			}
-
+			
 			// Comprobar si condiciones estan aceptadas
 			if (!signUp.getCheck().isSelected()) {
 				signUp.getError().setText("No ha aceptado los términos y condiciones");
 				signUp.getError().setVisible(true);
 				return;
 			}
-
+			
 //			Comprobar las contraseñas son iguales
 			if (!signUp.getPsw().getText().strip().equals(signUp.getPsw2().getText().strip())) {
 				signUp.getError().setText("Las contraseñas no coinciden");
 				signUp.getError().setVisible(true);
 				return; // Las contraseñas no son iguales por lo que no deberia ejecutar mas codigo
 			}
-
+			
 			String user = signUp.getTxtUsu().getText().strip();
+			
 			// Comprobar si el usuario existe en la bbdd ya que es unique
 			try {
 				if (iusu.existeUsuario(new Usuario(user))) {
@@ -216,28 +218,32 @@ public class RegistroController {
 			}catch(UsuarioException e) {
 				System.out.println(e);
 			}
-
-			Rol rol = new Rol();
-			// Comprobar si el email existe
+			
+			// Comprobar si el email esta bien
 			String email = signUp.getEmail().getText().strip();
-			if (email.endsWith("@gmail.com") || email.endsWith("@hotmail.com")) {
-				rol.setId(1);
-			} else {
+			if (!(email.endsWith("@gmail.com") || email.endsWith("@hotmail.com"))) {
 				signUp.getError().setText("El email no es válido");
 				signUp.getError().setVisible(true);
 				return;
 			}
-
-			// Obtener la imagen del circle
+			
+			
+			
+			// Obtener la imagen del usuario
 			Image img = (signUp.getImagen().getFill() instanceof ImagePattern)
-					? ((ImagePattern) signUp.getImagen().getFill()).getImage()
-					: null;
+					? ((ImagePattern) signUp.getImagen().getFill()).getImage(): null;
 
 			byte[] imagen = UtilesData.redimensionarImagenAByte(img);
-
+			
 			String contra = Seguridad.hashearContrasena(signUp.getPsw().getText().strip());
 
-			Usuario usu = new Usuario(user, contra, email, rol, LocalDate.now(), imagen);
+			Usuario usu=null;
+			try {
+				System.out.println( iusu.obtenerRol(new Rol(1)));
+				usu = new Usuario(user, contra, email, new Rol(), LocalDate.now(), imagen);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 
 			try {
 				iusu.insertar(usu);
@@ -398,5 +404,5 @@ public class RegistroController {
 		ventana.getContactPane().getTxtArea().clear();
 		ventana.getContactPane().getUser().requestFocus();
 	}
-
+	
 }

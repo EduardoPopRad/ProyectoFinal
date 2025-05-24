@@ -10,6 +10,7 @@ module Proyecto_Final {
 	requires javafx.swing;
 	requires bcrypt;
 	requires jakarta.mail;
+	requires java.naming;
 	
 	opens org.proyecto.vo to org.hibernate.orm.core;
 	

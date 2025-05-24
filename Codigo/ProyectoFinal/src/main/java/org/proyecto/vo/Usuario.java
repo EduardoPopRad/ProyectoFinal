@@ -167,7 +167,7 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return id + "(" + user + ") ";
+		return id + " (" + user + ") ";
 	}
 }
 

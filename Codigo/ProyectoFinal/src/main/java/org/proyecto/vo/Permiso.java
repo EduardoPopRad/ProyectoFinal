@@ -42,6 +42,4 @@ public class Permiso {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	
-	
 }

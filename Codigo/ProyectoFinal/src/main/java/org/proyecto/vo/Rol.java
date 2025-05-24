@@ -20,9 +20,13 @@ public class Rol {
 	private String tipo;
 
 	public Rol() {
+		id=1;
+		this.tipo="Cliente";
 	}
 
 	public Rol(int id) {
+		this.id=id;
+		this.tipo = "Cliente";
 	}
 
 	public Rol(String des) {

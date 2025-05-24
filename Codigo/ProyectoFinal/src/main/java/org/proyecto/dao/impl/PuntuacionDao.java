@@ -16,7 +16,7 @@ public class PuntuacionDao implements IPuntuacion{
 	@Override
 	public List<Puntuacion> obtenerTodas() throws PuntuacionException {
 		try (Session session = GestorSesionesHibernate.getSessionFactory().openSession()) {
-			return session.createQuery("FROM " + Puntuacion.class.getName(), Puntuacion.class).list();
+			return session.createQuery("FROM Puntuacion", Puntuacion.class).list();
 		}catch (Exception e) {
 			throw new PuntuacionException(e.getMessage(), PuntuacionException.ERROR_BUSQUEDA, "PuntuacionDao.ObtenerTodos");
 		}
