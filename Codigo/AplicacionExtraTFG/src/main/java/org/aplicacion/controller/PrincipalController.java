@@ -161,7 +161,7 @@ public class PrincipalController {
 	}
 
 	private void cambiarDatos() {
-		PaneDatosTrabajador paneDatos = new PaneDatosTrabajador(seleccionado);
+		PaneDatosTrabajador paneDatos = new PaneDatosTrabajador(seleccionado, ventana);
 		panelDatos = paneDatos.getPanel();
 		ventana.getDcha().getChildren().add(panelDatos);
 		ventana.getDcha().setVisible(true);

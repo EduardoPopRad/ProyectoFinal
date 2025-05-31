@@ -8,6 +8,7 @@ import org.aplicacion.dao.IUsuario;
 import org.aplicacion.dao.impl.PermisoDao;
 import org.aplicacion.dao.impl.PermisosUsuarioDao;
 import org.aplicacion.dao.impl.UsuarioDao;
+import org.aplicacion.ui.VentanaTrabajadores;
 import org.aplicacion.ui.paneles.PaneDatosTrabajador;
 import org.aplicacion.vo.Permiso;
 import org.aplicacion.vo.Usuario;
@@ -17,10 +18,12 @@ public class PanelDatosController {
 	private PaneDatosTrabajador panel;
 	private Usuario usu;
 	private List<Permiso> permisos;
+	private VentanaTrabajadores ventana;
 
-	public PanelDatosController(PaneDatosTrabajador p, Usuario u) {
+	public PanelDatosController(PaneDatosTrabajador p, Usuario u, VentanaTrabajadores v) {
 		this.panel = p;
 		this.usu = u;
+		this.ventana=v;
 		this.permisos = permisosUsuario();
 	}
 
@@ -28,6 +31,13 @@ public class PanelDatosController {
 		panel.getAceptar().setOnAction(event -> {
 			try {
 				panel.getError().setVisible(false);
+				
+				if(panel.getEmail().getText().isEmpty() || panel.getUser().getText().isEmpty()) {
+					panel.getError().setText("Alguno de los campos está vacio");
+					panel.getError().setVisible(true);
+					return;
+				}
+				
 				IPermisoUsuario ipu = new PermisosUsuarioDao();
 
 				ipu.eliminar(permisos, usu); //Se eliminan los permisos del usuario
@@ -39,11 +49,23 @@ public class PanelDatosController {
 				usu.setUser(panel.getUser().getText().strip());
 				
 				IUsuario iusu = new UsuarioDao();
-				iusu.actualizar(usu); //Esto falla
+				iusu.actualizar(usu);
+				
+				ventana.getBtnActualizar().fire();
 			} catch (Exception e) {
-				e.printStackTrace();
 				panel.getError().setVisible(true);
 				panel.getError().setText("Ha habido algun error");
+			}
+		});
+		
+		panel.getEliminar().setOnAction(event -> {
+			IUsuario iu = new UsuarioDao();
+			try {
+				iu.eliminar(usu);
+				ventana.getBtnQuitar().fire();
+				ventana.getBtnActualizar().fire();
+			} catch (Exception e) {
+				panel.getError().setText("Error durante la eliminación del usuario");
 			}
 		});
 

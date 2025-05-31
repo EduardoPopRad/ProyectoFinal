@@ -6,6 +6,7 @@ import java.util.List;
 import org.aplicacion.controller.PanelDatosController;
 import org.aplicacion.dao.IPermiso;
 import org.aplicacion.dao.impl.PermisoDao;
+import org.aplicacion.ui.VentanaTrabajadores;
 import org.aplicacion.util.UtilesData;
 import org.aplicacion.vo.Permiso;
 import org.aplicacion.vo.Usuario;
@@ -26,10 +27,10 @@ public class PaneDatosTrabajador {
 	private TextField user, email;
 	private Label fecha, id, rol, error;
 	private Circle imagen;
-	private Button aceptar;
+	private Button aceptar, eliminar;
 
-	public PaneDatosTrabajador(Usuario u) {
-		PanelDatosController controllerDatos = new PanelDatosController(this, u);
+	public PaneDatosTrabajador(Usuario u, VentanaTrabajadores tr) {
+		PanelDatosController controllerDatos = new PanelDatosController(this, u, tr);
 
 		panel = new Pane();
 		panel.setMinSize(675, 700);
@@ -65,26 +66,29 @@ public class PaneDatosTrabajador {
 		email.setPrefSize(250, 30);
 
 		aceptar = new Button("Actualizar Usuario");
+		eliminar  = new Button("Eliminar");
+		eliminar.setPrefWidth(110);
 		
 		id = new Label(u.getId()+"");
 		fecha = new Label(u.getFechaRegistro()+"");
 		rol = new Label(u.getRol().getTipo());
-		
+
 		error = new Label("Aqui va el error");
 		error.setMinSize(675, 30);
 		error.setVisible(false);
 		error.setStyle("-fx-text-fill: red;");
 		error.setAlignment(Pos.CENTER);
 		
-		panel.getChildren().addAll(user, email, imagen, aceptar, id, rol, fecha, error);
+		panel.getChildren().addAll(user, email, imagen, aceptar, id, rol, fecha, eliminar, error);
 		imagen.setLayoutX(150);		imagen.setLayoutY(120);
 		id.setLayoutX(230);			id.setLayoutY(250);
 		rol.setLayoutX(300);			rol.setLayoutY(250);
 		fecha.setLayoutX(400);			fecha.setLayoutY(250);
 		user.setLayoutX(220);		user.setLayoutY(280);
 		email.setLayoutX(220);		email.setLayoutY(330);
-		aceptar.setLayoutX(290); 	aceptar.setLayoutY(390);
-		error.setLayoutX(0);		error.setLayoutY(420);
+		aceptar.setLayoutX(290); 	aceptar.setLayoutY(385);
+		eliminar.setLayoutX(290);	eliminar.setLayoutY(425);
+		error.setLayoutX(0);		error.setLayoutY(460);
 		
 		controllerDatos.funciones();
 	}
@@ -112,4 +116,9 @@ public class PaneDatosTrabajador {
 	public Label getError() {
 		return error;
 	}
+	
+	public Button getEliminar() {
+		return eliminar;
+	}
+	
 }
