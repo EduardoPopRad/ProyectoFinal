@@ -67,6 +67,13 @@ public class PermisosUsuario {
 		this.usuario=u;
 	}
 	
+	
+	
+	@Override
+	public String toString() {
+		return "usuario=" + usuario + ", permiso=" + permiso;
+	}
+
 	public PermUsu getId() {
 		return id;
 	}

@@ -100,17 +100,14 @@ public class ObraService {
 			case "Cuadro":
 				IObra<Cuadro> cua = new GenericaObra<Cuadro>(Cuadro.class);
 				cua.insertar(new Cuadro(tit, aut, dim, est, ubi, desc, anyo, propia, imagen));
-				System.out.println("Se va ha insertar un cuadro");
 				break;
 			case "Grabado":
 				IObra<Grabado> gra = new GenericaObra<Grabado>(Grabado.class);
 				gra.insertar(new Grabado(tit, aut, dim, est, ubi, desc, anyo, propia, imagen));
-				System.out.println("Se va ha insertar un Grabado");
 				break;
 			case "Escultura":
 				IObra<Escultura> esc = new GenericaObra<Escultura>(Escultura.class);
 				esc.insertar(new Escultura(tit, aut, dim, est, ubi, desc, anyo, propia, imagen));
-				System.out.println("Se va ha insertar una Escultura");
 				break;
 			default:
 				throw new ObraException("Se necesita especificar el tipo de dato que se va a insertar con los RadioButton", ObraException.ERROR_INSERCION, "ObraService.insertarObra");
@@ -127,19 +124,16 @@ public class ObraService {
 				cu.setPropia(propia);
 				IObra<Cuadro> cua = new GenericaObra<Cuadro>(Cuadro.class);
 				cua.actualizar(cu);
-				System.out.println("Se ha actualizado el cuadro: "+cu);
 			}else if(ob instanceof Escultura) {
 				Escultura es = (Escultura) ob;
 				es.setPropia(propia);
 				IObra<Escultura> esc = new GenericaObra<Escultura>(Escultura.class);
 				esc.actualizar(es);
-				System.out.println("Se ha actualizado la escultura: "+es);
 			}else if(ob instanceof Grabado) {
 				Grabado gr = (Grabado) ob;
 				gr.setPropia(propia);
 				IObra<Grabado> gra = new GenericaObra<Grabado>(Grabado.class);
 				gra.actualizar(gr);
-				System.out.println("Se ha actualizado la escultura: "+gr);
 			}else {
 				throw new ObraException("Se necesita especificar el tipo de dato que se va a actualizar con los RadioButton", ObraException.ERROR_ACTUALIZACION, "ObraService.actualizarObra");
 			}
@@ -154,17 +148,14 @@ public class ObraService {
 				Cuadro cu = (Cuadro) ob;
 				IObra<Cuadro> cua = new GenericaObra<Cuadro>(Cuadro.class);
 				cua.eliminar(cu);
-				System.out.println("Se ha elimando el cuadro: "+cu);
 			}else if(ob instanceof Escultura) {
 				Escultura es = (Escultura) ob;
 				IObra<Escultura> esc = new GenericaObra<Escultura>(Escultura.class);
 				esc.eliminar(es);
-				System.out.println("Se ha elimando la escultura: "+es);
 			}else if(ob instanceof Grabado) {
 				Grabado gr = (Grabado) ob;
 				IObra<Grabado> gra = new GenericaObra<Grabado>(Grabado.class);
 				gra.eliminar(gr);
-				System.out.println("Se ha elimando la escultura: "+gr);
 			}else {
 				throw new ObraException("Se necesita especificar el tipo de dato que se va a eliminar con los RadioButton", ObraException.ERROR_ELIMINACION, "ObraService.eliminarObra");
 			}

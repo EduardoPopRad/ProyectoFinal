@@ -33,6 +33,7 @@ public class PaneImagenObra {
 		////////////////////////////////////
 		//////////////////////// Parte Centro
 		imagen = new ImageView();
+//		imagen.setImage(new Image(getClass().getResourceAsStream("/recursos/images/logo.png")));
 		imagen.setFitWidth(550);
 		imagen.setFitHeight(550);
 		imagen.setPreserveRatio(true);

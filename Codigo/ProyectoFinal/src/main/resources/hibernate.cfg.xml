@@ -5,8 +5,10 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/proyecto</property>
+<!--        <property name="hibernate.connection.url">jdbc:mysql://54.86.8.24:3306/proyecto</property>-->
 		<property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
  		<property name="hibernate.connection.username">root</property>
+<!--        <property name="hibernate.connection.password">mysql_123</property>-->
         <property name="hibernate.connection.password"></property>
  
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
@@ -29,32 +31,5 @@
  		<mapping class="org.proyecto.vo.Respuesta"/>
        
     </session-factory>
-    
-<!--    <session-factory>-->
-<!--        <property name="hibernate.connection.url">jdbc:mysql://54.86.8.24:3306/proyecto</property>-->
-<!--		<property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>-->
-<!-- 		<property name="hibernate.connection.username">root</property>-->
-<!--        <property name="hibernate.connection.password">mysql_123</property>-->
- 
-<!--		<property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>-->
-
-<!--        <property name="hibernate.hbm2ddl.auto">none</property>-->
-<!--        <property name="hibernate.show_sql">false</property>-->
-<!--        <property name="hibernate.format_sql">false</property>-->
-
-<!--		tiene que estar ordenado por las claves foraneas aqui tambien-->
-<!-- 		<mapping class="org.proyecto.vo.Rol"/>-->
-<!-- 		<mapping class="org.proyecto.vo.Permiso"/>-->
-<!-- 		<mapping class="org.proyecto.vo.Usuario"/>-->
-<!-- 		<mapping class="org.proyecto.vo.PermisosUsuario"/> 		-->
-<!-- 		<mapping class="org.proyecto.vo.Obra"/>-->
-<!-- 		<mapping class="org.proyecto.vo.Cuadro"/>-->
-<!-- 		<mapping class="org.proyecto.vo.Grabado"/>-->
-<!-- 		<mapping class="org.proyecto.vo.Escultura"/>-->
-<!-- 		<mapping class="org.proyecto.vo.Puntuacion"/>-->
-<!-- 		<mapping class="org.proyecto.vo.Consulta"/>-->
-<!-- 		<mapping class="org.proyecto.vo.Respuesta"/>-->
-       
-<!--    </session-factory>-->
 
 </hibernate-configuration>

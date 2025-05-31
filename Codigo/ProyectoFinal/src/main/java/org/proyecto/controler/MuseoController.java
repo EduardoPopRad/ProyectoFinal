@@ -101,4 +101,5 @@ public class MuseoController {
 			obraController.cargarIzquierda();
 		});
 	}
+	
 }

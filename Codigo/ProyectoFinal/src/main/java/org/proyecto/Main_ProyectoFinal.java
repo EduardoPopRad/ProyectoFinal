@@ -1,6 +1,7 @@
 package org.proyecto;
 
 import org.proyecto.ui.VentanaRegistro;
+import org.proyecto.util.GestorFicheroConfiguracion;
 
 import javafx.application.Application;
 import javafx.scene.image.Image;
@@ -20,7 +21,10 @@ public class Main_ProyectoFinal extends Application {
 		primaryStage.show();
 		
 		primaryStage.setOnCloseRequest(event -> { // Cuando se cierra la ventana
-			System.out.println("Se ha cerrado la aplicacion.");
+			if(GestorFicheroConfiguracion.obtenerRuta("recordar").equals("false")) {
+				GestorFicheroConfiguracion.actualizarValor("usuario", "");
+				GestorFicheroConfiguracion.actualizarValor("password", "");
+			}
 		});
 	}
 

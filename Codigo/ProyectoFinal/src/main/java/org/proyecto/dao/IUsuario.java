@@ -3,7 +3,6 @@ package org.proyecto.dao;
 import java.util.List;
 
 import org.proyecto.excepciones.UsuarioException;
-import org.proyecto.vo.Rol;
 import org.proyecto.vo.Usuario;
 
 public interface IUsuario {

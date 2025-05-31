@@ -11,6 +11,7 @@ module Proyecto_Final {
 	requires bcrypt;
 	requires jakarta.mail;
 	requires java.naming;
+	requires javafx.media;
 	
 	opens org.proyecto.vo to org.hibernate.orm.core;
 	

@@ -34,12 +34,14 @@ public class PanelDatosController {
 				
 				cambiarListaPermisos(); //Se cambian los permisos y se vuelven a introducirr todos
 				ipu.insertarPermisos(permisos, usu);
-
+				
 				usu.setEmail(panel.getEmail().getText().strip());
 				usu.setUser(panel.getUser().getText().strip());
+				
 				IUsuario iusu = new UsuarioDao();
-				iusu.actualizar(usu);
+				iusu.actualizar(usu); //Esto falla
 			} catch (Exception e) {
+				e.printStackTrace();
 				panel.getError().setVisible(true);
 				panel.getError().setText("Ha habido algun error");
 			}

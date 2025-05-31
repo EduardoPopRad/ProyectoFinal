@@ -6,9 +6,11 @@ import org.proyecto.ui.VentanaTrabajador;
 import org.proyecto.ui.paneles.PaneAjustes;
 import org.proyecto.ui.paneles.PaneMenu;
 import org.proyecto.ui.paneles.PanePerfil;
+import org.proyecto.util.ThMusica;
 import org.proyecto.util.UtilesData;
 import org.proyecto.vo.Usuario;
 
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
@@ -19,12 +21,16 @@ public class MenuController {
 	private PaneMenu menu;
 	private PanePerfil perfil;
 	
+	private boolean cerrar;
+	private ThMusica music;
+	
 	public MenuController(PaneMenu menu) {
 		this.menu = menu;
 	}
 
 	public void funciones(Stage primaryStage, Usuario usu) {
 		this.perfil=new PanePerfil(usu);
+		this.cerrar= false;
 		
 		if (usu.isPuedeResponder()) {
 			menu.setConsultas(new Button("Consultas"));
@@ -59,10 +65,19 @@ public class MenuController {
 			btnAjustes(usu);
 		});
 		
-		menu.getVolverRegistro().setOnAction(event ->{ 
+		menu.getVolverRegistro().setOnAction(event ->{
+			cerrar=true;
+			music.detenerReproduccion();
+			
 			UtilesData.animacionFade(menu.getVolverRegistro());
 			btnVolverRegistro(primaryStage);
 		});
+		
+		comenzarMusica(this);
+	}
+	
+	public boolean getCerrar() {
+		return cerrar;
 	}
 
 	private void irVentanaTrabajador(Stage primaryStage, Usuario usu) {
@@ -92,6 +107,15 @@ public class MenuController {
 		primaryStage.setMaximized(false);
 		primaryStage.setScene(new PantallaMuseo(primaryStage, u).getScene());
 		primaryStage.setMaximized(true); 
+	}
+	
+	public void comenzarMusica(MenuController m) {
+		Platform.runLater(() ->  {
+			music= new ThMusica(m);
+			Thread hilo = new Thread(music);
+			hilo.setDaemon(true); // para que se cierre al cerrar la app
+			hilo.start();
+		});
 	}
 }
 

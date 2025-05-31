@@ -82,7 +82,7 @@ public class VentanaRegistro {
 			paneDifu.setLayoutY((primaryStage.getHeight() - paneDifu.getHeight()) / 2.4);
 			imgViewBorrosa.setLayoutX((primaryStage.getWidth() - paneDifu.getWidth()) / 2);
 			imgViewBorrosa.setLayoutY((primaryStage.getHeight() - paneDifu.getHeight()) / 2.4);
-
+			
 		});
 
 		RegistroController controller = new RegistroController(this);

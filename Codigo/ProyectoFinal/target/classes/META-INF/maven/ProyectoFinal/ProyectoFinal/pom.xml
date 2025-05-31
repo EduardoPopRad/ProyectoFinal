@@ -43,6 +43,11 @@
 			<artifactId>javafx-swing</artifactId> <!-- Módulo que incluye SwingFXUtils -->
 			<version>23</version>
 		</dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-media</artifactId>
+			<version>23.0.1</version> 
+		</dependency>
 
 		<!--Jakarta.Mail -->
 		<dependency>

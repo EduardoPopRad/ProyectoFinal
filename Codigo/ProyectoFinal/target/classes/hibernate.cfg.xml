@@ -5,8 +5,10 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/proyecto</property>
+<!--        <property name="hibernate.connection.url">jdbc:mysql://54.86.8.24:3306/proyecto</property>-->
 		<property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
  		<property name="hibernate.connection.username">root</property>
+<!--        <property name="hibernate.connection.password">mysql_123</property>-->
         <property name="hibernate.connection.password"></property>
  
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
@@ -29,4 +31,5 @@
  		<mapping class="org.proyecto.vo.Respuesta"/>
        
     </session-factory>
+
 </hibernate-configuration>

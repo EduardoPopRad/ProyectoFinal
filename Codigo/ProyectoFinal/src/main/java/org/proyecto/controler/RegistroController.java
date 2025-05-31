@@ -177,37 +177,37 @@ public class RegistroController {
 
 		// Boton registrar
 		signUp.getRegister().setOnAction(event -> {
-			
+
 			IUsuario iusu = new UsuarioDao();
 			// Poner no visible TextField de error, ya que al pulsar no deberia aparecer ya
 			// que supuestamente se ha solucionado el error
-			
+
 			signUp.getError().setVisible(false);
 			// Comprobar si hay algun campo vacio
-			
+
 			if (signUp.getEmail().getText().strip().isEmpty() || signUp.getPsw().getText().strip().isEmpty()
 					|| signUp.getTxtUsu().getText().strip().isEmpty() || signUp.getPsw2().getText().strip().isEmpty()) {
 				signUp.getError().setText("Debes rellenar todos los campos");
 				signUp.getError().setVisible(true);
 				return;
 			}
-			
+
 			// Comprobar si condiciones estan aceptadas
 			if (!signUp.getCheck().isSelected()) {
 				signUp.getError().setText("No ha aceptado los términos y condiciones");
 				signUp.getError().setVisible(true);
 				return;
 			}
-			
+
 //			Comprobar las contraseñas son iguales
 			if (!signUp.getPsw().getText().strip().equals(signUp.getPsw2().getText().strip())) {
 				signUp.getError().setText("Las contraseñas no coinciden");
 				signUp.getError().setVisible(true);
 				return; // Las contraseñas no son iguales por lo que no deberia ejecutar mas codigo
 			}
-			
+
 			String user = signUp.getTxtUsu().getText().strip();
-			
+
 			// Comprobar si el usuario existe en la bbdd ya que es unique
 			try {
 				if (iusu.existeUsuario(new Usuario(user))) {
@@ -215,10 +215,10 @@ public class RegistroController {
 					signUp.getError().setVisible(true);
 					return;
 				}
-			}catch(UsuarioException e) {
+			} catch (UsuarioException e) {
 				System.out.println(e);
 			}
-			
+
 			// Comprobar si el email esta bien
 			String email = signUp.getEmail().getText().strip();
 			if (!(email.endsWith("@gmail.com") || email.endsWith("@hotmail.com"))) {
@@ -226,24 +226,17 @@ public class RegistroController {
 				signUp.getError().setVisible(true);
 				return;
 			}
-			
-			
-			
+
 			// Obtener la imagen del usuario
 			Image img = (signUp.getImagen().getFill() instanceof ImagePattern)
-					? ((ImagePattern) signUp.getImagen().getFill()).getImage(): null;
+					? ((ImagePattern) signUp.getImagen().getFill()).getImage()
+					: null;
 
 			byte[] imagen = UtilesData.redimensionarImagenAByte(img);
-			
+
 			String contra = Seguridad.hashearContrasena(signUp.getPsw().getText().strip());
 
-			Usuario usu=null;
-			try {
-				System.out.println( iusu.obtenerRol(new Rol(1)));
-				usu = new Usuario(user, contra, email, new Rol(), LocalDate.now(), imagen);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			Usuario usu = new Usuario(user, contra, email, new Rol(), LocalDate.now(), imagen);
 
 			try {
 				iusu.insertar(usu);
@@ -275,15 +268,9 @@ public class RegistroController {
 				return;
 			}
 
-			if (login.getRecordar().isSelected()) {
-				GestorFicheroConfiguracion.actualizarValor("usuario", login.getTxtUsu().getText().strip());
-				GestorFicheroConfiguracion.actualizarValor("password", login.getPsw().getText().strip());
-				GestorFicheroConfiguracion.actualizarValor("recordar", "true");
-			} else {
-				GestorFicheroConfiguracion.actualizarValor("recordar", "false");
-				GestorFicheroConfiguracion.actualizarValor("usuario", "");
-				GestorFicheroConfiguracion.actualizarValor("password", "");
-			}
+			GestorFicheroConfiguracion.actualizarValor("usuario", login.getTxtUsu().getText().strip());
+			GestorFicheroConfiguracion.actualizarValor("password", login.getPsw().getText().strip());
+			GestorFicheroConfiguracion.actualizarValor("recordar", String.valueOf(login.getRecordar().isSelected()));
 
 			// Busca el cliente en la base de datos con:
 			Usuario u = null;
@@ -300,10 +287,10 @@ public class RegistroController {
 
 			// Comprobar contraseña hasheada
 			if (!Seguridad.verificarContrasena(login.getPsw().getText().strip(), u.getPassword())) {
-                login.getError().setText("Alguna de las credenciales no concuerdan");
-                login.getError().setVisible(true);
-                return;
-            }
+				login.getError().setText("Alguna de las credenciales no concuerdan");
+				login.getError().setVisible(true);
+				return;
+			}
 
 			primaryStage.setResizable(true);
 			primaryStage.setScene(new PantallaMuseo(primaryStage, u).getScene());
@@ -325,22 +312,22 @@ public class RegistroController {
 	public void funcionesContactPane(PaneContact contact) {
 		contact.getEnviar().setOnAction(event -> {
 			contact.getError().setVisible(false);
-			
+
 			if (contact.getTxtArea().getText().strip().isEmpty() || contact.getDescription().getText().strip().isEmpty()
 					|| contact.getUser().getText().strip().isEmpty()) {
-				
+
 				contact.getError().setText("Debes rellenar todos los campos");
 				contact.getError().setVisible(true);
 				return;
 			}
-			
+
 			String desc = contact.getDescription().getText().strip();
-			if(desc.length()>=150) {
+			if (desc.length() >= 150) {
 				contact.getError().setText("Descripcion demasiado larga");
 				contact.getError().setVisible(true);
 				return;
 			}
-			
+
 			String user = contact.getUser().getText().strip();
 			IUsuario iusu = new UsuarioDao();
 			Usuario u = null;
@@ -354,10 +341,10 @@ public class RegistroController {
 				contact.getError().setVisible(true);
 				return;
 			}
-			
+
 			IConsulta icons = new ConsultaDao();
 			try {
-				icons.insertar(new Consulta(u, desc, contact.getTxtArea().getText().strip(), LocalDate.now(), false ));
+				icons.insertar(new Consulta(u, desc, contact.getTxtArea().getText().strip(), LocalDate.now(), false));
 			} catch (ConsultaException e) {
 				System.out.println(e);
 			}
@@ -404,5 +391,5 @@ public class RegistroController {
 		ventana.getContactPane().getTxtArea().clear();
 		ventana.getContactPane().getUser().requestFocus();
 	}
-	
+
 }

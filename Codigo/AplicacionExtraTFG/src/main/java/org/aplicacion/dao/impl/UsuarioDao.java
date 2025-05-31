@@ -46,6 +46,13 @@ public class UsuarioDao implements IUsuario {
 	@Override
 	public void actualizar(Usuario usu) throws Exception {
 		try (EntityManager entity = GestorConexionesJpa.getEntityManagerRemoto()) {
+			Rol rolBD = entity.find(Rol.class, usu.getRol().getId());
+			if (rolBD == null) {
+				throw new Exception("No se encontró el rol con ID " + usu.getRol().getId());
+			}
+
+			usu.setRol(rolBD);
+			
 			entity.getTransaction().begin();
 			entity.merge(usu);
 			entity.getTransaction().commit();

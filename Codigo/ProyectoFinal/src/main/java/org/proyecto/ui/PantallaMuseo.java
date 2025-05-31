@@ -226,5 +226,6 @@ public class PantallaMuseo {
 	public PaneMenu getPaneMenu() {
 		return paneMenu;
 	}
+	
 }
 

@@ -142,19 +142,19 @@ public class Usuario {
 		return per.tienePermiso(new PermisosUsuario(this, new Permiso(1))); 
 	}
 
-	public boolean isPuedeEliminar() { 
-		IPermisos per = new PermisosDao();
-		return per.tienePermiso(new PermisosUsuario(this, new Permiso(4))); 
-	}
-
 	public boolean isPuedeActualizar() {
 		IPermisos per = new PermisosDao();
 		return per.tienePermiso(new PermisosUsuario(this, new Permiso(2))); 
 	}
+	
+	public boolean isPuedeEliminar() { 
+		IPermisos per = new PermisosDao();
+		return per.tienePermiso(new PermisosUsuario(this, new Permiso(3))); 
+	}
 
 	public boolean isPuedeResponder() {
 		IPermisos per = new PermisosDao();
-		return per.tienePermiso(new PermisosUsuario(this, new Permiso(5)));
+		return per.tienePermiso(new PermisosUsuario(this, new Permiso(4)));
 	}
 
 	public byte[] getImage() {
