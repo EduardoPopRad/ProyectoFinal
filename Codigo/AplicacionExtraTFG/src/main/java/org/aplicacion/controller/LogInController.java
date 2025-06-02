@@ -18,6 +18,7 @@ public class LogInController {
 			ventana.getError().setVisible(false);
 			
 			if(ventana.getContra().getText().isEmpty() || ventana.getUser().getText().isEmpty()) {
+				ventana.getUser().requestFocus();
 				ventana.getError().setText("Alguno de los campos está vacio");
 				ventana.getError().setVisible(true);
 				return;
@@ -37,6 +38,7 @@ public class LogInController {
 			ventana.getError().setText("Alguna de las credenciales es incorrecta");
 			ventana.getError().setVisible(true);	
 		
+			ventana.getUser().requestFocus();
 			ventana.getContra().setText("");
 			ventana.getUser().setText("");
 		}
@@ -51,6 +53,7 @@ public class LogInController {
 	
 	private void cambiarVentana(Stage primaryStage) {
 		if(GestorFicheroConfiguracion.obtenerRuta("estaLogeado").equals("true")) {
+			ventana.getUser().requestFocus();
 			ventana.getError().setText("Ya hay una sesion iniciada, espere a que termine");
 			ventana.getError().setVisible(true);
 			return;

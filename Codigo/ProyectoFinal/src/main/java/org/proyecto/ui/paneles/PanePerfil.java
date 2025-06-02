@@ -46,14 +46,16 @@ public class PanePerfil {
         panel.getChildren().add(id);
         id.setLayoutX(150);		id.setLayoutY(15);
         
-        user = new TextField(usu.getUser());
+        user = new TextField();
+        user.setText(usu.getUser());
         user.setFocusTraversable(false);
         user.setMinSize(200, 20);
         user.setEditable(false);
         panel.getChildren().add(user);
         user.setLayoutX(150); 	user.setLayoutY(50);
         
-        correo= new TextField(usu.getEmail());
+        correo= new TextField();
+        correo.setText(usu.getEmail());
         correo.setFocusTraversable(false);
         correo.setMinSize(300, 20);
         correo.setEditable(false);

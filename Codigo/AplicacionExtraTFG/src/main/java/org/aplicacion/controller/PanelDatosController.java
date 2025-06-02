@@ -60,12 +60,17 @@ public class PanelDatosController {
 		
 		panel.getEliminar().setOnAction(event -> {
 			IUsuario iu = new UsuarioDao();
+			IPermisoUsuario ipu = new PermisosUsuarioDao();
 			try {
+				ipu.eliminar(permisosUsuario(), usu);
 				iu.eliminar(usu);
+
 				ventana.getBtnQuitar().fire();
 				ventana.getBtnActualizar().fire();
 			} catch (Exception e) {
+				e.printStackTrace();
 				panel.getError().setText("Error durante la eliminación del usuario");
+				panel.getError().setVisible(true);
 			}
 		});
 

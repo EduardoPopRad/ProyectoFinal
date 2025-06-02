@@ -117,8 +117,9 @@ public class RegistroController {
 
 		ventana.getContact().setStyle("-fx-background-color: rgba(255, 255, 255, 0.0); -fx-text-fill: white; "
 				+ "-fx-font-size: 15px; -fx-border-color: white;" + "-fx-border-width: 1; -fx-border-radius: 5;");
-
+		
 		ventana.getPanel().getChildren().remove(ventana.getPaneDifu()); // Si no se elimina se sobrepone el nuevo sobre
+		ventana.getContactPane().getError().setVisible(false);
 		ventana.setPaneDifu(ventana.getContactPane().getPanel());
 		ventana.getPaneDifu()
 				.setStyle("-fx-background-color:rgba(5, 5, 5, 0.83);" + "-fx-border-color: white; -fx-border-width: 2;"

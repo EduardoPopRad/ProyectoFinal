@@ -28,7 +28,7 @@ public class VentanaRegistro {
 	private Label error;
 	
 	public VentanaRegistro(Stage primaryStage) {
-		primaryStage.setTitle("Ventana Registro");
+		primaryStage.setTitle("Ventana LogIn");
 		primaryStage.setMinHeight(550);
 		primaryStage.setMinWidth(800);
 		
@@ -68,7 +68,7 @@ public class VentanaRegistro {
 			}
 		});
         
-        registrar = new Button("Register");
+        registrar = new Button("Log In");
         
         error = new Label("Aqui va el mensaje del error");
         error.setVisible(false);

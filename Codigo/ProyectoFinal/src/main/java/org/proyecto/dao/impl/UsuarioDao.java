@@ -28,7 +28,7 @@ public class UsuarioDao implements IUsuario {
 	@Override
 	public Usuario obtenerPorUser(Usuario obj) {
 		try (Session session = GestorSesionesHibernate.getSessionFactory().openSession()) {
-			return (Usuario) session.createNativeQuery("SELECT * FROM usuario WHERE usuario = ?", Usuario.class)
+			return (Usuario) session.createNativeQuery("SELECT * FROM usuario WHERE BINARY usuario = ?", Usuario.class)
 					.setParameter(1, obj.getUser()).getSingleResult();
 		} catch (Exception e) {
 			return null;
@@ -66,6 +66,12 @@ public class UsuarioDao implements IUsuario {
 	public void actualizar(Usuario obj) {
 		Transaction transaction = null;
 		try (Session session = GestorSesionesHibernate.getSessionFactory().openSession()) {
+			Rol rolBD = session.get(Rol.class, obj.getRol().getId());
+			if (rolBD == null) {
+				throw new Exception("No se encontró el rol con ID " + obj.getRol().getId());
+			}
+
+			obj.setRol(rolBD);
 			transaction = session.beginTransaction();
 			session.merge(obj);
 			transaction.commit();
