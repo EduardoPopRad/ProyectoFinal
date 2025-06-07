@@ -51,13 +51,13 @@ public class MuseoController {
 					pantallaMuseo.getListView().setVisible(true);
 					switch (pantallaMuseo.getListView().getItems().size()) {
 					case 1:
-						pantallaMuseo.getListView().setPrefHeight(25);
+						pantallaMuseo.getListView().setPrefHeight(40);
 						break;
 					case 2:
-						pantallaMuseo.getListView().setPrefHeight(50);
+						pantallaMuseo.getListView().setPrefHeight(75);
 						break;
 					default:
-						pantallaMuseo.getListView().setPrefHeight(75);
+						pantallaMuseo.getListView().setPrefHeight(100);
 						break;
 					}
 				}
