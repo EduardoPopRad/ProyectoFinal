@@ -12,19 +12,19 @@ DROP TABLE IF EXISTS usuario;
 DROP TABLE IF EXISTS permiso;
 DROP TABLE IF EXISTS rol;
 
-
 -- Crear tabla de rol
 CREATE TABLE rol (
     id_rol INTEGER AUTO_INCREMENT PRIMARY KEY,
     nombre_corto VARCHAR(255) NOT NULL
 );
 
+-- Crear tabla permiso
 CREATE TABLE permiso (
     id_permiso INTEGER AUTO_INCREMENT PRIMARY KEY,
     tipo VARCHAR(255) NOT NULL
 );
 
--- Crear la tabla Usuario
+-- Crear la tabla usuario
 CREATE TABLE usuario (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     usuario VARCHAR(100) NOT NULL UNIQUE,
@@ -36,6 +36,7 @@ CREATE TABLE usuario (
     FOREIGN KEY (id_rol) REFERENCES rol(id_rol) ON UPDATE CASCADE
 );
 
+-- Crear tabla permisos_usuario
 CREATE TABLE permisos_usuario (
     id_usu INTEGER,
     id_permiso INTEGER,
@@ -44,7 +45,7 @@ CREATE TABLE permisos_usuario (
     PRIMARY KEY(id_usu, id_permiso)
 );
 
--- Crear la tabla Obra
+-- Crear la tabla obra
 CREATE TABLE obra (
     id_obra INTEGER AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
@@ -64,21 +65,21 @@ CREATE TABLE cuadro (
     FOREIGN KEY (id_obra) REFERENCES obra(id_obra) ON UPDATE CASCADE
 );
 
--- Crear la tabla Escultura
+-- Crear la tabla escultura
 CREATE TABLE escultura (
     id_obra INTEGER PRIMARY KEY,
     material VARCHAR(100) NOT NULL,
     FOREIGN KEY (id_obra) REFERENCES obra(id_obra) ON UPDATE CASCADE
 );
 
--- Crear la tabla Grabado
+-- Crear tabla grabado
 CREATE TABLE grabado (
     id_obra INTEGER PRIMARY KEY,
     matriz VARCHAR(100) NOT NULL,
     FOREIGN KEY (id_obra) REFERENCES obra(id_obra) ON UPDATE CASCADE
 );
 
--- Crear tabla Puntuacion
+-- Crear tabla puntuacion
 CREATE TABLE puntuacion (
 	id_usuario integer,
 	id_obra integer, 
@@ -88,7 +89,7 @@ CREATE TABLE puntuacion (
 	FOREIGN KEY (id_obra) REFERENCES obra(id_obra)
 );
 
--- Crear la tabla Consulta
+-- Crear tabla consulta
 CREATE TABLE consulta (
     id_consulta INTEGER AUTO_INCREMENT PRIMARY KEY,
     id_cliente INTEGER NOT NULL,
@@ -99,7 +100,7 @@ CREATE TABLE consulta (
     FOREIGN KEY (id_cliente) REFERENCES usuario(id) ON UPDATE CASCADE
 );
 
--- Crear la tabla Respuesta
+-- Crear tabla respuesta
 CREATE TABLE respuesta (
     id_respuesta INTEGER AUTO_INCREMENT PRIMARY KEY,
     id_consulta INTEGER NOT NULL,
